@@ -12,6 +12,7 @@ function App() {
 
   return (
    <div>
+    <h1><strong>求人検索一覧</strong></h1>
     <JobsList jobsList={jobsRecruitment}/>
    </div>
   );
