@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import JobsList from './components/ui/JobsList';
+import ShowJobs from './components/ui/ShowJobs';
 
 function App() {
 
@@ -12,8 +12,7 @@ function App() {
 
   return (
    <div>
-    <h1><strong>求人検索一覧</strong></h1>
-    <JobsList jobsList={jobsRecruitment}/>
+      <ShowJobs jobsList={jobsRecruitment} />
    </div>
   );
 }
