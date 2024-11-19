@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import ShowJobs from "./components/ui/ShowJobs";
 import CheckCategory from "./components/ui/CheckCategory";
-import DropDown from "./DropDown";
+import DropDown from "./components/ui/DropDown";
 
 function App() {
   const jobsArray = [
