@@ -14,7 +14,7 @@ function App() {
 
   const [jobsRecruitment, setJobsRecruitment] = useState(jobsArray);
 
-  const [checkedItems, setCheckedItems] = useState<string[]>([]);
+  const [checkedList, setCheckedList] = useState<string[]>([]);
 
   const categoryList = [
     "事務",
@@ -29,20 +29,20 @@ function App() {
     "医療・介護",
   ];
 
-  const handleCheckedItemsChange = (newCheckedItems: string[]) => {
-    setCheckedItems(newCheckedItems);
+  const handleCheckedListChange = (newCheckedItems: string[]) => {
+    setCheckedList(newCheckedItems);
   };
 
   useEffect(() =>{
-    if (checkedItems.length == 0){
+    if (checkedList.length == 0){
       setJobsRecruitment(jobsArray);
     } else {
       const checkedCategory = jobsArray.filter((job) =>
-        checkedItems.includes(job.category)
+        checkedList.includes(job.category)
       );
       setJobsRecruitment(checkedCategory);
     }
-  }, [checkedItems, jobsArray]);
+  }, [checkedList, jobsArray]);
 
   return (
     <div className="grid grid-cols-2">
@@ -50,8 +50,8 @@ function App() {
         <h4>求人カテゴリ</h4>
         <CheckCategory
           categoryList={categoryList}
-          checkedItems={checkedItems}
-          onCheckedItemsChange={handleCheckedItemsChange}
+          checkedList={checkedList}
+          onCheckedListChange={handleCheckedListChange}
         />
       </div>
       {/* <div>

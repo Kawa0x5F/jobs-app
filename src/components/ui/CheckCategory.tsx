@@ -1,40 +1,43 @@
 import { FC } from "react";
 
 type CheckCategoryProps = {
-  categoryList: string[];
-  checkedItems: string[];
-  onCheckedItemsChange: (checkedItems: string[]) => void;
+  categoryList: string[]; // カテゴリのリスト
+  checkedList: string[]; // カテゴリで選択されたもののリスト
+  onCheckedListChange: (checkedList: string[]) => void; // 選択しているカテゴリの変更をする
 };
 
-const CheckCategory: FC<CheckCategoryProps> = ({
+const SelectJobs: FC<CheckCategoryProps> = ({
   categoryList,
-  checkedItems,
-  onCheckedItemsChange,
+  checkedList,
+  onCheckedListChange,
 }) => {
-  const handleCheckboxChange = (value: string) => {
-    const newCheckedItems = checkedItems.includes(value)
-      ? checkedItems.filter((item) => item !== value)
-      : [...checkedItems, value];
 
-    onCheckedItemsChange(newCheckedItems);
-  };
+    // 選択しているカテゴリの変更をする
+    const handleCheckboxChange = (value: string) => {
+        const newCheckedItems = checkedList.includes(value)
+        ? checkedList.filter((item) => item !== value)
+        : [...checkedList, value];
 
-  return (
-    <div>
-      {categoryList.map((category) => (
-        <div key={category}>
-          <label>
-            <input
-              type="checkbox"
-              checked={checkedItems.includes(category)}
-              onChange={() => handleCheckboxChange(category)}
-            />
-            {category}
-          </label>
+        // App.tsxに選択情報をリフトアップ
+        onCheckedListChange(newCheckedItems);
+    };
+
+    return (
+        <div>
+        {categoryList.map((category) => (
+            <div key={category}>
+            <label>
+                <input
+                type="checkbox"
+                checked={checkedList.includes(category)} // 選択しているリストに含まれているならtrue
+                onChange={() => handleCheckboxChange(category)} // 変更があったらhandle関数に飛ばす
+                />
+                {category}
+            </label>
+            </div>
+        ))}
         </div>
-      ))}
-    </div>
-  );
+    );
 };
 
-export default CheckCategory;
+export default SelectJobs;
