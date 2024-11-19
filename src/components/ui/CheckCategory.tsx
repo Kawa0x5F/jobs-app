@@ -6,7 +6,7 @@ type CheckCategoryProps = {
   onCheckedListChange: (checkedList: string[]) => void; // 選択しているカテゴリの変更をする
 };
 
-const SelectJobs: FC<CheckCategoryProps> = ({
+const CheckCategory: FC<CheckCategoryProps> = ({
   categoryList,
   checkedList,
   onCheckedListChange,
@@ -40,4 +40,4 @@ const SelectJobs: FC<CheckCategoryProps> = ({
     );
 };
 
-export default SelectJobs;
+export default CheckCategory;
